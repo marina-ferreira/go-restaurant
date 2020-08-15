@@ -28,7 +28,7 @@
 <br />
 
 <p align="center">
-  <img alt="GoRestaurant Landing Page" width="48%" src="./.github/landing.jpg" />
+  <img alt="GoRestaurant Landing Page" width="80%" src="./.github/landing.jpg" />
 </p>
 <br />
 
