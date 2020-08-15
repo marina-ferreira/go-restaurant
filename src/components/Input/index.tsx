@@ -9,14 +9,15 @@ import React, {
 import { IconBaseProps } from 'react-icons';
 import { useField } from '@unform/core';
 
-import { Container } from './styles';
+import { Container, Label } from './styles';
 
 interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
+  label: string;
   icon?: React.ComponentType<IconBaseProps>;
 }
 
-const Input: React.FC<IInputProps> = ({ name, icon: Icon, ...rest }) => {
+const Input: React.FC<IInputProps> = ({ name, label, icon: Icon, ...rest }) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [isFocused, setIsFocused] = useState(false);
@@ -43,17 +44,22 @@ const Input: React.FC<IInputProps> = ({ name, icon: Icon, ...rest }) => {
   }, [fieldName, registerField]);
 
   return (
-    <Container isFilled={isFilled} isFocused={isFocused}>
-      {Icon && <Icon size={20} />}
+    <>
+      <Label htmlFor={name}>{label}</Label>
 
-      <input
-        onFocus={handleInputFocus}
-        onBlur={handleInputBlur}
-        defaultValue={defaultValue}
-        ref={inputRef}
-        {...rest}
-      />
-    </Container>
+      <Container isFilled={isFilled} isFocused={isFocused}>
+        {Icon && <Icon size={20} />}
+
+        <input
+          id={name}
+          onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
+          defaultValue={defaultValue}
+          ref={inputRef}
+          {...rest}
+        />
+      </Container>
+    </>
   );
 };
 

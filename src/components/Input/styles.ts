@@ -5,6 +5,9 @@ interface IContainerProps {
   isFilled: boolean;
 }
 
+export const Label = styled.label`
+  margin-bottom: 12px;
+`;
 export const Container = styled.div<IContainerProps>`
   display: flex;
   align-items: center;
@@ -15,7 +18,7 @@ export const Container = styled.div<IContainerProps>`
   width: 100%;
   font-size: 16px;
 
-  & + div {
+  & + label {
     margin-top: 24px;
   }
 
